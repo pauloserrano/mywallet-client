@@ -1,4 +1,4 @@
 import GlobalStyle from "./GlobalStyle";
-import LoginForm from "./LoginForm";
+import Form from "./Form";
 
-export { GlobalStyle, LoginForm }
+export { GlobalStyle, Form }

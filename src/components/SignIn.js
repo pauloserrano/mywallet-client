@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom"
 import { useForm } from "../hooks/useForm"
+import { LoginWrapper } from '../styles'
 import Form from "../common/Form"
 
 
@@ -10,19 +12,24 @@ const SignIn = () => {
 
   function handleSubmit(e){
     e.preventDefault()
+    console.log(form)
   }
 
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Fields>
-        <input type="email" name="email" value={form.email} onChange={handleChange} />
-        <input type="password" name="password" value={form.password} onChange={handleChange} />
-      </Form.Fields>
-      <Form.Submit>
-        <button type="submit">Submit</button>
-      </Form.Submit>
-    </Form>
+    <LoginWrapper>
+      <h1>MyWallet</h1>
+      <Form onSubmit={handleSubmit}>
+        <Form.Fields>
+          <input required type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
+          <input required type="password" name="password" placeholder="Senha" value={form.password} onChange={handleChange} />
+        </Form.Fields>
+        <Form.Submit>
+          <button type="submit">Submit</button>
+        </Form.Submit>
+      </Form>
+      <Link to="/signup">Primeira vez? Cadastre-se!</Link>
+    </LoginWrapper>
   )
 }
 

@@ -58,9 +58,12 @@ const GlobalStyle = createGlobalStyle`
     body{
         width: 100%;
         min-height: 100vh;
-        padding: 24px;
         background-color: #8C11BE;
         font-family: 'Raleway', sans-serif;
+    }
+
+    a{
+        text-decoration: none;
     }
 `
 

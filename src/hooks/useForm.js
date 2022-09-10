@@ -3,7 +3,7 @@ import { useState } from 'react'
 const useForm = (initial={}) => {
     const [form, setForm] = useState(initial)
 
-    function handleChange({ target: { value, name }}) {
+    function handleForm({ target: { value, name }}) {
         setForm({
             ...form,
             [name]: value
@@ -11,7 +11,7 @@ const useForm = (initial={}) => {
     }
 
 
-  return [form, handleChange]
+  return [form, handleForm]
 }
 
 export { useForm }

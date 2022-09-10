@@ -5,7 +5,7 @@ import Form from "../common/Form"
 
 
 const SignIn = () => {
-  const [form, handleChange] = useForm({
+  const [form, handleForm] = useForm({
     email: '',
     password: ''
   })
@@ -21,8 +21,8 @@ const SignIn = () => {
       <h1>MyWallet</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Fields>
-          <input required type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
-          <input required type="password" name="password" placeholder="Senha" value={form.password} onChange={handleChange} />
+          <input required type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleForm} />
+          <input required type="password" name="password" placeholder="Senha" value={form.password} onChange={handleForm} />
         </Form.Fields>
         <Form.Submit>
           <button type="submit">Submit</button>

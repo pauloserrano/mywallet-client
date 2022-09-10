@@ -2,6 +2,8 @@ import styled from "styled-components"
 
 const BalanceWrapper = styled.section`
     display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     width: min(100%, 500px);
     border-radius: 5px;
@@ -9,8 +11,13 @@ const BalanceWrapper = styled.section`
     flex: 1;
     background-color: #fff;
 
+    h3{
+        color: #868686;
+    }
+
     ul{
         width: 100%;
+        align-self: flex-start;
         overflow-y: auto;
     }
 
@@ -45,4 +52,21 @@ const BalanceWrapper = styled.section`
     }
 `
 
-export default BalanceWrapper
+const Entry = styled.li`
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    line-height: 2em;
+
+    span:first-child{
+        color: #C6C6C6;
+        margin-right: 1ch;
+    }
+
+    span:nth-child(3){
+        margin-left: auto;
+        color: ${(props) => props.type === 'expense' ? '#C70000' : '#03AC00'};
+    }
+`
+
+export { BalanceWrapper, Entry }

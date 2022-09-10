@@ -15,7 +15,7 @@ const HomeWrapper = styled(Wrapper)`
       color: white;
     }
 
-    .logout-btn{
+    .btn{
       cursor: pointer;
     }
   }
@@ -34,6 +34,7 @@ const HomeWrapper = styled(Wrapper)`
       height: min(20vh, 150px);
       padding: 1rem;
       border: none;
+      border-radius: 5px;
       font-size: 16px;
       font-weight: bold;
       color: white;

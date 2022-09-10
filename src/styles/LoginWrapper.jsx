@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Wrapper from "./Wrapper";
 
 const LoginWrapper = styled(Wrapper)`
+  justify-content: center;
+  
   h1{
     font: 2.5em 'Saira Stencil One', monospace;
     color: white;

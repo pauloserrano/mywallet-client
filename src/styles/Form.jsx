@@ -4,9 +4,10 @@ import styled from "styled-components";
 const FormWrapper = styled.form`
     display: flex;
     flex-direction: column;
+    width: min(100%, 500px);
 
     input, button{
-        width: min(100%, 500px);
+        width: 100%;
         padding: 1rem;
         font-size: 1.25em;
         border-radius: 5px;

@@ -2,18 +2,33 @@ import { AiOutlineCloseCircle as Close } from "react-icons/ai"
 import { useNavigate } from "react-router-dom"
 import Form from "../common/Form"
 import { useForm } from "../hooks/useForm"
+import useGlobalContext from "../hooks/useGlobalContext"
+import { postTransaction } from "../services/axios"
 import { HomeWrapper } from "../styles"
 
 const AddIncome = () => {
+    const { user } = useGlobalContext()
     const navigate = useNavigate()
     const [form, handleForm] = useForm({
         value: '',
         description: ''
     })
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault()
-        console.log(form)
+        
+        try {
+            await postTransaction({
+                description: form.description,
+                value: form.value.replace(',', '.'), 
+                token: user.token, 
+                type: 'income' 
+            })
+            navigate('/')
+            
+        } catch (error) {
+            console.error(error)
+        }
     }
 
   return (
@@ -25,7 +40,7 @@ const AddIncome = () => {
         <Form onSubmit={handleSubmit}>
             <Form.Fields>
                 <input required type="number" step={0.01} name="value" placeholder="Valor" value={form.value} onChange={handleForm} />
-                <input type="text" name="description" placeholder="Descrição" value={form.description} onChange={handleForm} />
+                <input required type="text" name="description" placeholder="Descrição" value={form.description} onChange={handleForm} />
             </Form.Fields>
             <Form.Submit>
                 <button type="submit">Salvar Entrada</button>

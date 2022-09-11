@@ -1,18 +1,32 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "../hooks/useForm"
-import { LoginWrapper } from '../styles'
+import { LoginWrapper } from "../styles"
 import Form from "../common/Form"
+import { signIn } from "../services/axios"
+import useGlobalContext from "../hooks/useGlobalContext"
 
 
 const SignIn = () => {
+  const { setUser } = useGlobalContext()
+  const navigate = useNavigate()
   const [form, handleForm] = useForm({
     email: '',
     password: ''
   })
 
-  function handleSubmit(e){
+  async function handleSubmit(e){
     e.preventDefault()
-    console.log(form)
+    try {
+      const { data: { token }} = await signIn({ ...form })
+      setUser(user => ({
+        ...user,
+        token
+      }))
+      navigate('/')
+      
+    } catch (error) {
+      console.error(error)
+    }
   }
 
 

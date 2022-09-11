@@ -7,9 +7,10 @@ const BalanceWrapper = styled.section`
     position: relative;
     width: min(100%, 500px);
     border-radius: 5px;
-    padding: 1em 1em 3em;
+    padding: 1em 0.1em 3em 1em;
     flex: 1;
     background-color: #fff;
+    overflow: hidden;
 
     h3{
         color: #868686;
@@ -17,13 +18,14 @@ const BalanceWrapper = styled.section`
 
     ul{
         width: 100%;
+        height: 100%;
         align-self: flex-start;
         overflow-y: auto;
     }
 
     li{
         display: flex;
-        width: 100%;
+        width: calc(100% - 1em);
         font-size: 16px;
         line-height: 2em;
 
@@ -48,6 +50,10 @@ const BalanceWrapper = styled.section`
 
         span:first-child{
             font-weight: bold;
+        }
+
+        span:last-child{
+            color: ${props => props.positive ? '#3ACC00' : '#C70000'};
         }
     }
 `

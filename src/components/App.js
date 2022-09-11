@@ -11,7 +11,7 @@ import SignUp from './SignUp'
 const App = () => {
   return (
     <Router>
-      <GlobalContextProvider value={1}>
+      <GlobalContextProvider>
         <GlobalStyle />
         <Routes>
           <Route path='/' element={<Home />} />

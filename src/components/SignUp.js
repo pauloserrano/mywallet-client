@@ -1,9 +1,12 @@
 import { LoginWrapper } from "../styles"
 import Form from "../common/Form"
 import { useForm } from "../hooks/useForm"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { signUp } from "../services/axios"
+
 
 const SignUp = () => {
+  const navigate = useNavigate()
   const [form, handleForm] = useForm({
     name: '',
     email: '',
@@ -11,9 +14,22 @@ const SignUp = () => {
     passwordCheck: ''
   })
 
-  function handleSubmit(e){
+
+  async function handleSubmit(e){
     e.preventDefault()
-    console.log(form)
+
+    if (form.password !== form.passwordCheck){
+      alert('Senhas não coincidem.')
+      return
+    }
+
+    try {
+      await signUp({ ...form })
+      navigate('/signin')
+      
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -25,7 +41,6 @@ const SignUp = () => {
           <input required type="email" name="email" placeholder="Email" value={form.email} onChange={handleForm} />
           <input required type="password" name="password" placeholder="Senha" value={form.password} onChange={handleForm} />
           <input required type="password" name="passwordCheck" placeholder="Confirme a senha" value={form.passwordCheck} onChange={handleForm} />
-
         </Form.Fields>
         <Form.Submit>
           <button type="submit">Cadastrar</button>

@@ -53,7 +53,7 @@ const Home = () => {
   return (
     <HomeWrapper>
       <header>
-        <h2>Olá, Fulano</h2>
+        <h2>Olá, {user.name}</h2>
         <Logout onClick={handleLogout} className="btn" size={24} color={"white"} />
       </header>
       <Balance entries={entries} />

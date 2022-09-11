@@ -24,7 +24,7 @@ const Balance = ({ entries }) => {
                 </ul>
                 <div>
                     <span>SALDO</span>
-                    <span>{total}</span>
+                    <span>{total.toFixed(2)}</span>
                 </div>
             </>)
             : <h3>Não há registro de entrada e saída</h3>

@@ -17,9 +17,9 @@ const SignIn = () => {
   async function handleSubmit(e){
     e.preventDefault()
     try {
-      const { data: { token }} = await signIn({ ...form })
+      const { data: { name, token }} = await signIn({ ...form })
       setUser(user => ({
-        ...user,
+        name,
         token
       }))
       navigate('/')

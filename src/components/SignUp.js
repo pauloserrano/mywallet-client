@@ -28,7 +28,15 @@ const SignUp = () => {
       navigate('/signin')
       
     } catch (error) {
-      console.error(error)
+
+      switch(error.response.status){
+        case 409:
+          alert('Email já cadastrado!')
+          break
+        
+        default:
+          alert('Por favor, confira os dados informados!')
+      }
     }
   }
 

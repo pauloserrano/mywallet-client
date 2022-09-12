@@ -16,16 +16,15 @@ const SignIn = () => {
 
   async function handleSubmit(e){
     e.preventDefault()
+
     try {
       const { data: { name, token }} = await signIn({ ...form })
-      setUser(user => ({
-        name,
-        token
-      }))
+      setUser(() => ({ name, token }))
       navigate('/')
       
     } catch (error) {
-      console.error(error)
+      alert('Usuário e/ou senha incorretos!')
+      console.log(error)
     }
   }
 
